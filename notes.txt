@@ -32,3 +32,7 @@ AI writes the final answer
 ->When you call the stream() method, it returns an iterator that yields small chunks of the model's output in real time. You can loop through these chunks and process or display them as they arrive.
 
 ->This approach is particularly useful for chat applications, live text generation, and any scenario where you want users to see the response immediately rather than waiting for the complete output.
+
+->batching is a collection of indepent requests to a model which can reduce the or improve significant performence and reduce costs as processing can be done in parallel.
+
+->
