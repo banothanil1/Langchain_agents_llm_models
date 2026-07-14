@@ -1,0 +1,34 @@
+7-11-2026 (AI Engineer)
+-----------------------
+
+-> uv package manager is the python library used to manage all the packages used in project.
+-> their are many ids like cursor,visual studio code,google anti gravity to use.
+-> first afhal download uv package mngr with powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex". then after initialize the whole repo with command "uv init"
+-> then create the venv with uv pckg controller wit cmd "uv venv" and activate the envrment and start installing the packages.
+-> initialize requirement file and put the package names init and run the command "uv add -r requirement.txt".
+-> Question
+    │
+    ▼
+Search Vector DB
+    │
+    ▼
+Relevant paragraphs found
+    │
+    ▼
+Send those paragraphs to AI
+    │
+    ▼
+AI writes the final answer
+
+->The last step requires an LLM (Large Language Model), and that's where an API key is used.
+
+->whenever you add any independent library to your project always use "uv add libraryname".
+
+->their are two ways to integrate the llm model ie one using the langchain.chatModel and other using the libraries like langchain-openai
+->do not push the .env using git. it rejects the push always put .env inside .gitignore.
+
+->Most language models can stream their responses, sending the output piece by piece as it's generated instead of waiting for the entire response to finish. This provides a faster, more interactive experience, especially for longer responses.
+
+->When you call the stream() method, it returns an iterator that yields small chunks of the model's output in real time. You can loop through these chunks and process or display them as they arrive.
+
+->This approach is particularly useful for chat applications, live text generation, and any scenario where you want users to see the response immediately rather than waiting for the complete output.
