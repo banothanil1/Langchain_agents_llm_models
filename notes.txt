@@ -35,4 +35,8 @@ AI writes the final answer
 
 ->batching is a collection of indepent requests to a model which can reduce the or improve significant performence and reduce costs as processing can be done in parallel.
 
+->docstree is the string defined inside the tool which is used to identify the functionality of the particular tool using it.
+
+->their are two ways to create a tools one is using from 'langchain.agent import create_agent' and other is using 'langchain.tools @tool'.
+
 ->
