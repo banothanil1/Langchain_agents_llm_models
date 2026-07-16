@@ -57,3 +57,78 @@ Content – Represents the actual content of the message (like text, images, aud
 Metadata – Optional fields such as response information, message IDs, and token `usage
 
 LangChain provides a standard message type that works across all model providers, ensuring consistent behavior regardless of the model being called.
+
+👨 Human
+    |
+    | "What's the weather?"
+    |
+    ▼
+🤖 AI
+    |
+    | "I don't know.
+    | I'll call get_weather()."
+    |
+    ▼
+🔧 Tool
+    |
+    | Checks Weather API
+    |
+    ▼
+Returns
+"Sunny,72°F"
+    |
+    ▼
+🤖 AI
+    |
+    | "The weather in San Francisco is Sunny,72°F."
+    |
+    ▼
+👨 Human
+
+->Structured output allows language models to return responses in a predefined format (schema) instead of free-form text. This makes the output consistent, predictable, and easy to parse programmatically.
+->Models can be instructed to generate responses that follow a specific schema.
+->Ensures the output is structured and machine-readable.
+->Simplifies parsing and downstream processing.
+->LangChain supports multiple schema types and methods for enforcing structured output.
+->using 'include_raw=True' you can get the raw message as well structed message
+->Pydantic is a Python library used for data validation and data modeling.
+It ensures that the generated output follows a predefined structure and data types.
+
+->BaseModel is the base class provided by Pydantic.
+Every custom data model (schema) inherits from BaseModel.
+It automatically validates the data and converts it into Python objects.
+
+->Field is used to provide additional information about a model field.
+It can define:
+    Default values
+    Descriptions
+    Validation rules (minimum length, maximum length, etc.)
+    Examples and metadata
+    It also helps the LLM better understand what information should be generated.
+
+->A nested structured output means one model contains another model.
+It is useful for representing hierarchical or complex data.
+In your example, a movie contains multiple actor objects.
+
+->Actor Model
+    Represents the structure of a single actor.
+    Defines what information should be available for every actor, such as name, role, age, and birthplace.
+    Acts as a reusable template.
+
+->MovieDetails Model
+    Represents the complete structure of a movie.
+    Combines different types of information like title, release year, cast, genre, and budget into a single schema.
+
+->List of Actors
+    The cast is defined as a list of actor objects.
+    This means the movie can contain one or more actors.
+    Every item in the list must follow the Actor model.
+
+->with_structured_output()
+    This LangChain method binds a Pydantic model to the LLM.
+    It instructs the model to generate output that matches the defined schema.
+    The returned result is a Pydantic object instead of plain text.
+
+->Response Validation
+    After the LLM generates the response, Pydantic validates it.
+    If the generated data doesn't match the schema, validation fails (or LangChain may retry, depending on the model/provider).
