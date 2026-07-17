@@ -132,3 +132,9 @@ In your example, a movie contains multiple actor objects.
 ->Response Validation
     After the LLM generates the response, Pydantic validates it.
     If the generated data doesn't match the schema, validation fails (or LangChain may retry, depending on the model/provider).
+
+->TypedDict defines the expected structure and types of a dictionary for static type checking.It does not validate data at runtime; it mainly helps IDEs and type checkers like mypy.Best used when you want lightweight type hints without additional runtime overhead.
+
+->Pydantic defines structured data using Python classes and performs runtime validation.It automatically checks, converts, and validates input data, raising errors for invalid values.Best used for APIs, FastAPI, LangChain structured outputs, and applications where data correctness is important.
+
+->dataclasses is a class typically mainly data,although there arent really any restrictions,you create it using @dataclasses decorators
